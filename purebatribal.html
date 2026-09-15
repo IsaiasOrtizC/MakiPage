@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Black Tribal</title>
+
+<style>
+
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #030303;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   FONDO TRIBAL
+========================================================= */
+
+.tribal-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.tribal {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    fill: none;
+    stroke: #fff;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    opacity: .16;
+}
+
+
+/* =========================================================
+   TRIBALES INDIVIDUALES
+========================================================= */
+
+.corner {
+    position: absolute;
+    width: 620px;
+    height: 620px;
+}
+
+.corner.tl {
+    top: -80px;
+    left: -80px;
+}
+
+.corner.tr {
+    top: -80px;
+    right: -80px;
+    transform: scaleX(-1);
+}
+
+.corner.bl {
+    bottom: -100px;
+    left: -100px;
+    transform: scaleY(-1);
+}
+
+.corner.br {
+    bottom: -100px;
+    right: -100px;
+    transform: scale(-1);
+}
+
+
+/* =========================================================
+   RAMAS LATERALES
+========================================================= */
+
+.side-tribal {
+    position: absolute;
+
+    width: 450px;
+    height: 900px;
+
+    fill: none;
+    stroke: #fff;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    opacity: .10;
+}
+
+.side-left {
+    left: -260px;
+    top: 15%;
+}
+
+.side-right {
+    right: -260px;
+    top: 15%;
+    transform: scaleX(-1);
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.page {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header {
+    height: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: rgba(0,0,0,.90);
+
+    border-bottom: 1px solid #222;
+
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+
+    letter-spacing: 8px;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transition: .3s;
+}
+
+nav a:hover {
+    opacity: .45;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: calc(100vh - 88px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px;
+}
+
+.hero-content {
+
+    width: min(850px, 95%);
+
+    padding: 75px;
+
+    text-align: center;
+
+    background: rgba(0,0,0,.82);
+
+    border: 1px solid #262626;
+
+    box-shadow:
+        0 0 100px rgba(0,0,0,.9);
+}
+
+.subtitle {
+
+    color: #777;
+
+    font-size: 11px;
+
+    letter-spacing: 8px;
+
+    margin-bottom: 30px;
+}
+
+h1 {
+
+    font-size: clamp(60px, 9vw, 125px);
+
+    line-height: .82;
+
+    letter-spacing: -6px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+h1 span {
+
+    color: transparent;
+
+    -webkit-text-stroke: 2px white;
+}
+
+.description {
+
+    max-width: 600px;
+
+    margin: 40px auto;
+
+    color: #888;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+.button {
+
+    display: inline-block;
+
+    padding: 16px 45px;
+
+    border: 1px solid white;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 10px;
+
+    transition: .3s;
+}
+
+.button:hover {
+
+    background: white;
+
+    color: black;
+}
+
+
+/* =========================================================
+   COLECCIÓN
+========================================================= */
+
+.collection {
+
+    position: relative;
+
+    padding: 130px 8%;
+
+    background: #050505;
+
+    border-top: 1px solid #222;
+}
+
+.collection h2 {
+
+    font-size: clamp(45px, 6vw, 80px);
+
+    letter-spacing: -4px;
+
+    margin-bottom: 60px;
+
+    text-transform: uppercase;
+}
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.card {
+
+    min-height: 260px;
+
+    padding: 40px;
+
+    border: 1px solid #252525;
+
+    background: #080808;
+
+    transition: .4s;
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: white;
+}
+
+.card-number {
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 35px;
+}
+
+.card h3 {
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+
+    text-transform: uppercase;
+}
+
+.card p {
+
+    color: #777;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 850px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero-content {
+        padding: 55px 25px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .corner {
+        opacity: .6;
+        transform: scale(.75);
+    }
+
+    .corner.tr {
+        transform: scaleX(-1) scale(.75);
+    }
+
+    .corner.bl {
+        transform: scaleY(-1) scale(.75);
+    }
+
+    .corner.br {
+        transform: scale(-1) scale(.75);
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     FONDO
+========================================================= -->
+
+<div class="tribal-background">
+
+
+<!-- =========================================================
+     TRIBAL SUPERIOR IZQUIERDO
+========================================================= -->
+
+<svg class="tribal corner tl"
+     viewBox="0 0 620 620">
+
+    <!-- RAMA PRINCIPAL -->
+
+    <path
+        stroke-width="28"
+        d="
+        M40 80
+
+        C120 100
+        155 145
+        190 190
+
+        C230 240
+        255 275
+        290 315
+
+        C330 360
+        350 410
+        335 475
+        "
+    />
+
+
+    <!-- RAMA PRINCIPAL INTERNA -->
+
+    <path
+        stroke-width="15"
+        d="
+        M95 65
+
+        C155 105
+        180 150
+        205 205
+
+        C225 250
+        255 285
+        300 320
+        "
+    />
+
+
+    <!-- RAMA SUPERIOR -->
+
+    <path
+        stroke-width="17"
+        d="
+        M155 150
+
+        C125 105
+        105 70
+        120 25
+
+        C135 65
+        160 80
+        195 85
+        "
+    />
+
+
+    <!-- BIFURCACIÓN -->
+
+    <path
+        stroke-width="12"
+        d="
+        M205 205
+
+        C155 200
+        110 175
+        75 140
+
+        C90 190
+        80 225
+        45 250
+        "
+    />
+
+
+    <!-- RAMA LARGA -->
+
+    <path
+        stroke-width="18"
+        d="
+        M255 285
+
+        C210 300
+        175 325
+        150 365
+
+        C125 405
+        95 430
+        50 435
+        "
+    />
+
+
+    <!-- RAMA SECUNDARIA -->
+
+    <path
+        stroke-width="10"
+        d="
+        M150 365
+
+        C175 375
+        200 400
+        205 430
+
+        C210 455
+        200 480
+        180 505
+        "
+    />
+
+
+    <!-- RAMA SUPERIOR PEQUEÑA -->
+
+    <path
+        stroke-width="9"
+        d="
+        M190 190
+
+        C220 160
+        225 125
+        215 90
+        "
+    />
+
+
+    <!-- ESPIRAL -->
+
+    <path
+        stroke-width="11"
+        d="
+        M335 475
+
+        C375 430
+        420 445
+        425 480
+
+        C430 515
+        390 535
+        365 510
+
+        C345 490
+        365 470
+        385 480
+        "
+    />
+
+
+    <!-- PUNTA 1 -->
+
+    <path
+        stroke-width="8"
+        d="
+        M75 140
+        L20 100
+        L65 170
+        "
+    />
+
+
+    <!-- PUNTA 2 -->
+
+    <path
+        stroke-width="8"
+        d="
+        M50 435
+        L10 470
+        L65 460
+        "
+    />
+
+
+    <!-- PUNTA 3 -->
+
+    <path
+        stroke-width="7"
+        d="
+        M215 90
+        L190 35
+        L235 75
+        "
+    />
+
+
+    <!-- DETALLE PEQUEÑO -->
+
+    <path
+        stroke-width="6"
+        d="
+        M270 315
+        C300 295
+        320 275
+        330 250
+        "
+    />
+
+</svg>
+
+
+
+<!-- =========================================================
+     TRIBAL SUPERIOR DERECHO
+========================================================= -->
+
+<svg class="tribal corner tr"
+     viewBox="0 0 620 620">
+
+    <path
+        stroke-width="28"
+        d="
+        M40 80
+        C120 100 155 145 190 190
+        C230 240 255 275 290 315
+        C330 360 350 410 335 475
+        "
+    />
+
+    <path
+        stroke-width="15"
+        d="
+        M95 65
+        C155 105 180 150 205 205
+        C225 250 255 285 300 320
+        "
+    />
+
+    <path
+        stroke-width="17"
+        d="
+        M155 150
+        C125 105 105 70 120 25
+        C135 65 160 80 195 85
+        "
+    />
+
+    <path
+        stroke-width="12"
+        d="
+        M205 205
+        C155 200 110 175 75 140
+        C90 190 80 225 45 250
+        "
+    />
+
+    <path
+        stroke-width="18"
+        d="
+        M255 285
+        C210 300 175 325 150 365
+        C125 405 95 430 50 435
+        "
+    />
+
+    <path
+        stroke-width="10"
+        d="
+        M150 365
+        C175 375 200 400 205 430
+        C210 455 200 480 180 505
+        "
+    />
+
+    <path
+        stroke-width="9"
+        d="
+        M190 190
+        C220 160 225 125 215 90
+        "
+    />
+
+    <path
+        stroke-width="11"
+        d="
+        M335 475
+        C375 430 420 445 425 480
+        C430 515 390 535 365 510
+        C345 490 365 470 385 480
+        "
+    />
+
+    <path
+        stroke-width="8"
+        d="
+        M75 140
+        L20 100
+        L65 170
+        "
+    />
+
+    <path
+        stroke-width="8"
+        d="
+        M50 435
+        L10 470
+        L65 460
+        "
+    />
+
+</svg>
+
+
+
+<!-- =========================================================
+     TRIBAL INFERIOR IZQUIERDO
+========================================================= -->
+
+<svg class="tribal corner bl"
+     viewBox="0 0 620 620">
+
+    <path
+        stroke-width="28"
+        d="
+        M40 80
+        C120 100 155 145 190 190
+        C230 240 255 275 290 315
+        C330 360 350 410 335 475
+        "
+    />
+
+    <path
+        stroke-width="15"
+        d="
+        M95 65
+        C155 105 180 150 205 205
+        C225 250 255 285 300 320
+        "
+    />
+
+    <path
+        stroke-width="17"
+        d="
+        M155 150
+        C125 105 105 70 120 25
+        C135 65 160 80 195 85
+        "
+    />
+
+    <path
+        stroke-width="12"
+        d="
+        M205 205
+        C155 200 110 175 75 140
+        C90 190 80 225 45 250
+        "
+    />
+
+    <path
+        stroke-width="18"
+        d="
+        M255 285
+        C210 300 175 325 150 365
+        C125 405 95 430 50 435
+        "
+    />
+
+    <path
+        stroke-width="10"
+        d="
+        M150 365
+        C175 375 200 400 205 430
+        C210 455 200 480 180 505
+        "
+    />
+
+    <path
+        stroke-width="11"
+        d="
+        M335 475
+        C375 430 420 445 425 480
+        C430 515 390 535 365 510
+        C345 490 365 470 385 480
+        "
+    />
+
+    <path
+        stroke-width="8"
+        d="
+        M50 435
+        L10 470
+        L65 460
+        "
+    />
+
+</svg>
+
+
+
+<!-- =========================================================
+     TRIBAL INFERIOR DERECHO
+========================================================= -->
+
+<svg class="tribal corner br"
+     viewBox="0 0 620 620">
+
+    <path
+        stroke-width="28"
+        d="
+        M40 80
+        C120 100 155 145 190 190
+        C230 240 255 275 290 315
+        C330 360 350 410 335 475
+        "
+    />
+
+    <path
+        stroke-width="15"
+        d="
+        M95 65
+        C155 105 180 150 205 205
+        C225 250 255 285 300 320
+        "
+    />
+
+    <path
+        stroke-width="17"
+        d="
+        M155 150
+        C125 105 105 70 120 25
+        C135 65 160 80 195 85
+        "
+    />
+
+    <path
+        stroke-width="12"
+        d="
+        M205 205
+        C155 200 110 175 75 140
+        C90 190 80 225 45 250
+        "
+    />
+
+    <path
+        stroke-width="18"
+        d="
+        M255 285
+        C210 300 175 325 150 365
+        C125 405 95 430 50 435
+        "
+    />
+
+    <path
+        stroke-width="10"
+        d="
+        M150 365
+        C175 375 200 400 205 430
+        C210 455 200 480 180 505
+        "
+    />
+
+    <path
+        stroke-width="11"
+        d="
+        M335 475
+        C375 430 420 445 425 480
+        C430 515 390 535 365 510
+        C345 490 365 470 385 480
+        "
+    />
+
+</svg>
+
+
+
+<!-- =========================================================
+     RAMA LATERAL IZQUIERDA
+========================================================= -->
+
+<svg class="side-tribal side-left"
+     viewBox="0 0 450 900">
+
+    <path
+        stroke-width="24"
+        d="
+        M225 0
+        C190 100 200 170 150 240
+        C100 310 90 390 130 460
+        C170 530 160 610 100 700
+        C70 745 45 800 30 880
+        "
+    />
+
+    <path
+        stroke-width="14"
+        d="
+        M150 240
+        C100 220 60 180 40 130
+        "
+    />
+
+    <path
+        stroke-width="11"
+        d="
+        M150 240
+        C190 200 215 155 210 105
+        "
+    />
+
+    <path
+        stroke-width="13"
+        d="
+        M130 460
+        C80 450 40 415 15 370
+        "
+    />
+
+    <path
+        stroke-width="10"
+        d="
+        M130 460
+        C190 430 220 390 225 335
+        "
+    />
+
+    <path
+        stroke-width="12"
+        d="
+        M100 700
+        C55 675 25 640 10 595
+        "
+    />
+
+    <path
+        stroke-width="9"
+        d="
+        M100 700
+        C145 665 170 620 170 570
+        "
+    />
+
+
+    <!-- espiral -->
+
+    <path
+        stroke-width="10"
+        d="
+        M30 880
+
+        C75 830
+        120 845
+        125 880
+
+        C130 910
+        90 925
+        65 900
+
+        C45 880
+        65 860
+        85 870
+        "
+    />
+
+</svg>
+
+
+
+<!-- =========================================================
+     RAMA LATERAL DERECHA
+========================================================= -->
+
+<svg class="side-tribal side-right"
+     viewBox="0 0 450 900">
+
+    <path
+        stroke-width="24"
+        d="
+        M225 0
+        C190 100 200 170 150 240
+        C100 310 90 390 130 460
+        C170 530 160 610 100 700
+        C70 745 45 800 30 880
+        "
+    />
+
+    <path
+        stroke-width="14"
+        d="
+        M150 240
+        C100 220 60 180 40 130
+        "
+    />
+
+    <path
+        stroke-width="11"
+        d="
+        M150 240
+        C190 200 215 155 210 105
+        "
+    />
+
+    <path
+        stroke-width="13"
+        d="
+        M130 460
+        C80 450 40 415 15 370
+        "
+    />
+
+    <path
+        stroke-width="10"
+        d="
+        M130 460
+        C190 430 220 390 225 335
+        "
+    />
+
+    <path
+        stroke-width="12"
+        d="
+        M100 700
+        C55 675 25 640 10 595
+        "
+    />
+
+    <path
+        stroke-width="9"
+        d="
+        M100 700
+        C145 665 170 620 170 570
+        "
+    />
+
+    <path
+        stroke-width="10"
+        d="
+        M30 880
+        C75 830 120 845 125 880
+        C130 910 90 925 65 900
+        C45 880 65 860 85 870
+        "
+    />
+
+</svg>
+
+</div>
+
+
+<!-- =========================================================
+     CONTENIDO
+========================================================= -->
+
+<div class="page">
+
+<header>
+
+    <div class="logo">
+        TRIBAL
+    </div>
+
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#coleccion">Diseños</a>
+        <a href="#">Galería</a>
+        <a href="#">Contacto</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="subtitle">
+            BLACK · INK · TRIBAL
+        </div>
+
+        <h1>
+            DARK<br>
+            <span>TRIBAL</span>
+        </h1>
+
+        <p class="description">
+            Una estética inspirada en tatuajes tribales,
+            blackwork y tinta negra. Ramas orgánicas,
+            bifurcaciones, espirales y formas afiladas.
+        </p>
+
+        <a href="#coleccion" class="button">
+            Explorar
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="collection" id="coleccion">
+
+    <h2>
+        Colección
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-number">
+                01 / BLACK
+            </div>
+
+            <h3>
+                Blackwork
+            </h3>
+
+            <p>
+                Grandes contrastes de tinta negra
+                combinados con espacios negativos.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                02 / TRIBAL
+            </div>
+
+            <h3>
+                Tribal
+            </h3>
+
+            <p>
+                Ramas, bifurcaciones, puntas y
+                curvas inspiradas en diseños
+                tradicionales de tatuaje.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                03 / INK
+            </div>
+
+            <h3>
+                Ink
+            </h3>
+
+            <p>
+                Una estética completamente
+                monocromática basada en tinta
+                y espacio negativo.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+</body>
+</html>
