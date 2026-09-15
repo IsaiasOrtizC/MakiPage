@@ -138,6 +138,7 @@
         <nav class="top reveal reveal-1">
           <div class="brand">Makiicamii</div>
           <div class="nav-links">
+            <a href="reservas.html">Reservar</a>
             ${c.instagram ? `<a href="https://instagram.com/${esc(c.instagram.replace('@',''))}" target="_blank" rel="noreferrer">${esc(c.instagram)}</a>` : ''}
           </div>
         </nav>
